@@ -1,5 +1,6 @@
 <?php
 
-use App\Controllers\HomeController;
+use App\Controllers\SortController;
 
-$router->get('/', [HomeController::class, 'index']);
+$router->get('/', [SortController::class, 'index']);
+$router->post('/sort', [SortController::class, 'sort']);

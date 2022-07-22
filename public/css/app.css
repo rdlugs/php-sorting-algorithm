@@ -26,8 +26,16 @@ body {
     text-align: center;
 }
 
+.card>h3 {
+    color: rgb(92, 92, 92);
+}
+
+.card p {
+    color: rgb(122, 122, 122);
+}
+
 .hr {
-    border-top: 1px solid rgb(196, 196, 196);
+    border-top: 1px solid rgb(241, 241, 241);
 }
 
 .form-container {
@@ -36,4 +44,39 @@ body {
     justify-content: center;
     padding: 5px;
     width: 100%;
+}
+
+.input-group {
+    padding: 4px;
+}
+
+.input-group input,
+.input-group select {
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid rgb(123, 176, 255);
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border: 1px solid rgb(91, 152, 245);
+    outline: none;
+}
+
+.input-group button {
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid rgb(123, 176, 255);
+    width: 60px;
+    transition: 0.2s;
+}
+
+.input-group button:hover {
+    filter: brightness(90%);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.input-group button:focus {
+    filter: brightness(85%);
 }

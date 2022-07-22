@@ -15,4 +15,11 @@ class BaseController
             HttpError::PageNotFound();
         }
     }
+
+    public function redirect($url)
+    {
+        header('Cache-Control: no-cache');
+        header('Location: ' . $url, true, 302);
+        exit();
+    }
 }

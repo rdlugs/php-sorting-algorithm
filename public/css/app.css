@@ -1,0 +1,39 @@
+html,
+body {
+    background-color: rgb(241, 241, 241);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: white;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    margin-top: 100px;
+    width: 60%;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.card>h1 {
+    color: rgb(68, 68, 68);
+    text-align: center;
+}
+
+.hr {
+    border-top: 1px solid rgb(196, 196, 196);
+}
+
+.form-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    width: 100%;
+}

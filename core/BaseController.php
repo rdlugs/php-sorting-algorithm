@@ -16,8 +16,15 @@ class BaseController
         }
     }
 
-    public function redirect($url)
+    public function redirect($url, $data = [])
     {
+        if (count($data) > 0) {
+            $session = new Session;
+            foreach ($data as $key => $value) {
+                $session->flash($key, $value);
+            }
+        }
+
         header('Cache-Control: no-cache');
         header('Location: ' . $url, true, 302);
         exit();

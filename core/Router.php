@@ -8,10 +8,15 @@ use ReflectionClass;
 
 class Router
 {
-
     private $registered_routes = [];
     private $controllers = [];
     private $parameters = [];
+    private $session;
+
+    public function __construct()
+    {
+        $this->session = new Session;
+    }
 
     public function get($route, $controller)
     {
@@ -66,11 +71,12 @@ class Router
 
             if (!count($this->parameters)) {
                 $class->{$method}();
-                return;
+            } else {
+                $class->{$method}(...$this->parameters);
             }
-
-            $class->{$method}(...$this->parameters);
         }
+
+        $this->session->clear_flash_datas();
     }
 
     private function parseUrl($request_url)

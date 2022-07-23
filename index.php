@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('BASE_URL', $_SERVER['SERVER_NAME']);
 define('BASE_DIR', __DIR__);
@@ -14,5 +12,3 @@ $router = new Core\Router;
 require_once BASE_DIR . '/routes/web.php';
 
 $router->render();
-
-unset($_SESSION['flash']);

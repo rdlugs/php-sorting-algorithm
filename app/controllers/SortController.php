@@ -5,19 +5,19 @@ namespace App\Controllers;
 
 use Core\BaseController;
 use App\Service\SortingService;
+use Core\Session;
 
 class SortController extends BaseController
 {
 
     public function index()
     {
+        $session = new Session;
         $datas = [];
-        $session = isset($_SESSION['flash']) ? $_SESSION['flash'] : null;
-
-        if ($session) {
-            $datas['sorted_string'] = $session ? $session['sorted_string'] : null;
-            $datas['original_string'] = $session ? $session['original_string'] : null;
-            $datas['sorting_strategy'] = $session ? $session['sorting_strategy'] : null;
+        if ($session->get('sorted_string')) {
+            $datas['sorted_string'] = $session->get('sorted_string');
+            $datas['original_string'] = $session->get('original_string');
+            $datas['sorting_strategy'] = $session->get('sorting_strategy');
         }
 
         return $this->view('sort', $datas);
@@ -28,16 +28,15 @@ class SortController extends BaseController
         $sort = new SortingService;
         $result = $sort->doSort($_POST['sort_input'], $_POST['sort_strategy']);
 
-        if (!is_array($result)) {
+        if (!is_array($result))
             return $this->redirect('/');
-        }
 
-        $_SESSION['flash'] = [
+        $datas = [
             'sorted_string'     => implode('', $result),
-            'original_string'   => $_POST['sort_input'],
+            'original_string'   =>  $_POST['sort_input'],
             'sorting_strategy'  => ucwords(str_replace("_", " ", $_POST['sort_strategy'])),
         ];
 
-        return $this->redirect('/');
+        return $this->redirect('/', $datas);
     }
 }

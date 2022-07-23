@@ -28,6 +28,7 @@ class SortController extends BaseController
         $sort = new SortingService;
         $result = $sort->doSort($_POST['sort_input'], $_POST['sort_strategy']);
 
+
         if (!is_array($result))
             return $this->redirect('/');
 
@@ -37,6 +38,6 @@ class SortController extends BaseController
             'sorting_strategy'  => ucwords(str_replace("_", " ", $_POST['sort_strategy'])),
         ];
 
-        return $this->redirect('/', $datas);
+        // return $this->redirect('/', $datas);
     }
 }

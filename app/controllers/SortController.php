@@ -38,6 +38,6 @@ class SortController extends BaseController
             'sorting_strategy'  => ucwords(str_replace("_", " ", $_POST['sort_strategy'])),
         ];
 
-        // return $this->redirect('/', $datas);
+        return $this->redirect('/', $datas);
     }
 }

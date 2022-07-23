@@ -25,9 +25,8 @@ class SortController extends BaseController
 
     public function sort()
     {
-        $sort = new SortingService;
-        $result = $sort->doSort($_POST['sort_input'], $_POST['sort_strategy']);
-
+        $sort_service = new SortingService;
+        $result = $sort_service->doSort($_POST['sort_input'], $_POST['sort_strategy']);
 
         if (!is_array($result))
             return $this->redirect('/');

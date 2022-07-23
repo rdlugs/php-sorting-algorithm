@@ -8,19 +8,24 @@ use App\Strategy\SortStrategy;
 
 class SortingService
 {
-    public function doSort(string $string, string $sortStrategy)
+    private array $registered_algorihtm = [
+        'merge_sort',
+        'quick_sort'
+    ];
+
+    public function doSort(string $string, string $sort_strategy)
     {
-        // do not proceed if string is empty
+        if (!in_array($sort_strategy, $this->registered_algorihtm))
+            return;
+
         $string = str_replace(" ", "", $string);
         if (!$string) return;
 
-        // in case, remove empty array elements
         $toBeSorted = array_filter(str_split($string));
 
-        // by default we run quick sort
         $sort = new SortStrategy(new QuickSortAlgorithm);
 
-        switch ($sortStrategy) {
+        switch ($sort_strategy) {
             case 'merge_sort':
                 $sort->setStrategy(new MergeSortAlgorithm);
                 $result = $sort->doSort($toBeSorted);

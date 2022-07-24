@@ -16,12 +16,12 @@ class SortingService
     public function doSort(string $string, string $sort_strategy)
     {
         if (!in_array($sort_strategy, $this->registered_algorihtm))
-            return;
+            return false;
 
         $string = str_replace(" ", "", $string);
-        if (!$string) return;
+        if (!$string) return false;
 
-        $toBeSorted = array_filter(str_split($string));
+        $toBeSorted = str_split($string);
 
         $sort = new SortStrategy(new QuickSortAlgorithm);
 
